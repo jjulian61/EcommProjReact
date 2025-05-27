@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {library} from '@fontawesome/fontawesome-svg-core'
-import {faBars, faShoppingCart, faTimes, faBolt, faBookOpen} from '@fontawesome/fontawesome-svg-Icons'
+import {faBars, faShoppingCart, faTimes, faBolt, faBookOpen, faTags, faStar, faStarHalfAlt} from '@fontawesome/fontawesome-svg-Icons'
 
 library.add(faBars, faShoppingCart, faTimes)
 
