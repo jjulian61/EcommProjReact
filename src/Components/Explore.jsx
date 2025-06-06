@@ -8,8 +8,9 @@ const Explore = () => {
                     <h2>
                         Explore more <span>purple</span>
                     </h2>
-                    <a href="/books" >
-                    <button className="btn">Explore books</button></a>
+                    <Link to="/books" >
+                    <button className="btn">Explore books</button>
+                    </Link>
                 </div>
             </div>
         </section>
