@@ -1,13 +1,11 @@
-import "./App.css";
 import Discounted from "./Components/Discounted";
 import Explore from "./Components/Explore";
 import Featured from "./Components/Featured";
 import Footer from "./Components/Footer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Highlights from "./Components/Highlights";
 import Landing from "./Components/Landing";
 import Nav from "./Components/Nav";
-import { Switch } from "react-router-dom/cjs/react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"; 
 import Home from "./pages/Home";
 import Books from "./pages/Books"
@@ -49,7 +47,7 @@ function App() {
 
   useEffect(() => {
 
-  } [cart]);
+  }, [cart]);
 
 
 
@@ -58,11 +56,13 @@ function App() {
     <Router>
       <div className="App">
         <Nav  numberOfItems={numberOfItems()}/>
+       <Switch> 
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render = {() => <Books books={books} />} />
         <Route path="/books/:id"render={() => <BookInfo books={books} addToCart={addToCart} />} />
         <Route path="/cart" render = {() => <Cart books={books} cart={cart} changeQuantity={changeQuantity} removeItem={removeItem} />} />
         <Home />
+        </Switch>
         <Footer />
       </div>
     </Router>
