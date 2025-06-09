@@ -12,7 +12,6 @@ import Books from "./pages/Books"
 import { books } from "../src/data"
 import BookInfo from "./pages/BookInfo"
 import Cart from "./pages/Cart"
-import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -56,13 +55,13 @@ function App() {
     <Router>
       <div className="App">
         <Nav  numberOfItems={numberOfItems()}/>
-       <Switch> 
+       <Routes> 
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render = {() => <Books books={books} />} />
         <Route path="/books/:id"render={() => <BookInfo books={books} addToCart={addToCart} />} />
         <Route path="/cart" render = {() => <Cart books={books} cart={cart} changeQuantity={changeQuantity} removeItem={removeItem} />} />
         <Home />
-        </Switch>
+        </Routes>
         <Footer />
       </div>
     </Router>
@@ -70,3 +69,4 @@ function App() {
 }
 
 export default App;
+
