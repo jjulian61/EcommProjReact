@@ -4,7 +4,7 @@ const price = ({ salePrice,originalPrice}) => {
   return (
     <div className="book__price">
         {
-            salePrice 
+            salePrice ?
             <>
             <span className="book__price--normal">
               ${book.originalPrice.toFixed(2)}
