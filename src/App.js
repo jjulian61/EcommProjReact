@@ -4,8 +4,8 @@ import Home from "./pages/Home";
 import Books from "./pages/Books";
 import BookInfo from "./pages/BookInfo";
 import { books } from "./data";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+import Nav from "./Components/Nav";
+import Footer from "./Components/Footer";
 import Cart from "./pages/Cart";
 
 function App() {
@@ -106,4 +106,3 @@ function App() {
 }
 
 export default App;
-
