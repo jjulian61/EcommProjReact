@@ -1,6 +1,9 @@
 import React from "react";
+import Highlight from "./ui/Highlight";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Highlight = ((icon, title, para)) => {
+
+const Highlight = ({ icon, title, para }) => {
   return (
     <div className="highlight">
       <div className="highlight__img">
@@ -14,3 +17,5 @@ const Highlight = ((icon, title, para)) => {
     </div>
   );
 };
+
+export default Highlight;
