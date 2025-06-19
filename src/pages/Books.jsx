@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import { books } from "../data";
-import Book from "../Components/ui/Book";
-
-const Books = ({ books: initialBooks }) => {
-    const [books, setBooks] = useState(initialBooks);
-
-    function filterbooks(filter) 
-    {
-=======
-import { books } from "../data";
 import { books } from "../data";
 import React, { useState } from "react";
 import Book from "../Components/ui/Book";
@@ -20,7 +8,6 @@ const Books = ({ books: initialBooks }) => {
     function filterbooks(filter) 
     {
 
->>>>>>> a92f84bb7acca2b482b384c456988a1cbd26f109
         if (filter === 'LOW_TO_HIGH') {
             setBooks(books.slice().sort((a,b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice)));
         }
