@@ -1,11 +1,11 @@
-import { books } from "../data";
+import {books} from "../data";
 import React, { useState } from "react";
 import Book from "../Components/ui/Book";
 
 const Books = ({ books: initialBooks }) => {
     const [books, setBooks] = useState(initialBooks);
 
-    function filterbooks(filter) 
+    function filterBooks(filter) 
     {
 
         if (filter === 'LOW_TO_HIGH') {

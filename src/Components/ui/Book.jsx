@@ -1,5 +1,5 @@
-import {FontAwesomeIcon} from "@fontawesome/react-fontawesome";
-import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Price from "./Price"
 import Rating from "./Rating"
@@ -13,7 +13,7 @@ const Book = ({book}) => {
     useEffect(() => {
         const image = new Image();
         image.src = book.url;
-        imgage.onload = () => {
+        image.onload = () => {
             setTimeout(() => {
                 if (mountedRef.current) {
                     setImg(image);
