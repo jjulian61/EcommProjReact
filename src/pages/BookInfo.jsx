@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Price from "../Components/ui/Price"
 import Rating from "../Components/ui/Rating"
+import Book from "../Components/ui/Book"
 
 
 
