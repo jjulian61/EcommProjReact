@@ -66,11 +66,3 @@ const Book = ({book}) => {
 };
 
 export default Book;
-        
-      
-    </div>
-    
-  );
-};
-
-export default Book;
