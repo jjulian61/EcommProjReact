@@ -1,5 +1,5 @@
 import React from 'react'
-import { books } from '../data.js';
+import { books } from '../../data'
 
 const price = ({ salePrice,originalPrice}) => {
   return (
