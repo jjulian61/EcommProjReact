@@ -89,8 +89,7 @@ function App() {
           <Route
             path="/cart"
             element={
-              <Cart
-                cart={cart}
+              <Cart cart={cart}
                 updateCart={updateCart}
                 removeItem={removeItem}
                 totals={calcPrices()}
