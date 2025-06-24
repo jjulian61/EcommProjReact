@@ -8,12 +8,12 @@ const price = ({ salePrice,originalPrice}) => {
             salePrice ?
             <>
             <span className="book__price--normal">
-              ${books.originalPrice.toFixed(2)}
+              ${originalPrice.toFixed(2)}
               </span>
-            ${books.salePrice.toFixed(2)}
+            ${salePrice.toFixed(2)}
             </>
             : (
-                <>${originalPrice}</>
+                <>${originalPrice.toFixed(2)}</>
         )}
         
       </div>
