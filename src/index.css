@@ -361,7 +361,7 @@ FEATURES
 
 */
 
-#features {
+#featured {
   padding-top: 8vw;
   background-color: rgba(115, 66, 214, 0.1);
 }
@@ -376,6 +376,7 @@ FEATURES
   width: 25%;
   padding: 24px;
   transition: all 300ms ease;
+
 }
 
 .book:hover {
@@ -383,8 +384,8 @@ FEATURES
 }
 
 .book__img {
-  max-height: 320px;
-  max-width: 250px;
+  height: 100%;
+  width: 100%;
   transition: all 300ms ease;
 }
 
@@ -425,6 +426,8 @@ FEATURES
   border-radius: 4px;
   overflow: hidden;
   display: flex;
+  height: 75%;
+  width: 75%;
 }
 
 .book__title {
