@@ -12,6 +12,7 @@ const Book = ({book}) => {
     
     useEffect(() => {
         const image = new Image();
+        if (book && book.url) {   image.src = book.url; } else {   console.warn('Book or URL missing', book); }
         image.src = book.url;
         image.onload = () => {
             setTimeout(() => {

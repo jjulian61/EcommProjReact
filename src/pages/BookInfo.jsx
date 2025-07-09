@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Price from "../Components/ui/Price"
 import Rating from "../Components/ui/Rating"
+import Book from "../Components/ui/Book"
 
 
 
 const BookInfo = ({ books, addToCart }) => {
+    const [added, setAdded] = useState(false);
     const { id } = useParams();
     const book = books.find((book) => +book.id === +id);
+    const [cart] = useState([]);
 
     function addBookTocart(book) {
         setAdded(true);
@@ -55,7 +58,7 @@ const BookInfo = ({ books, addToCart }) => {
                                     <button className="btn">Checkout</button>
                                     </Link>
                                 ) : (
-                                    <button className="btn" oncClick={() => addBookToCart(book)}>
+                                    <button className="btn" oncClick={() => addBookTocart(book)}>
                                 Add to cart
                             </button>
                         )}
