@@ -6,7 +6,11 @@ import BookInfo from "./pages/BookInfo";
 import { books } from "./data";
 import Nav from "./Components/Nav";
 import Cart from "./pages/Cart";
+<<<<<<< HEAD
 import Featured from "./Components/Featured"
+=======
+import Featured from "./Components/Featured";
+>>>>>>> cef2fb0eff3fcae018d85ad42a39bdd3a02b2a67
 
 function App() {
   const [cart, setCart] = useState([]);
