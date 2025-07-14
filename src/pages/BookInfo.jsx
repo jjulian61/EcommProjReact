@@ -11,7 +11,7 @@ const BookInfo = ({ books, addToCart }) => {
     const [added, setAdded] = useState(false);
     const { id } = useParams();
     const book = books.find((book) => +book.id === +id);
-    const [] = useState([]);
+    const [cart] = useState([]);
 
     function addBookTocart(book) {
         setAdded(true);
