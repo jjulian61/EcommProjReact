@@ -4,14 +4,14 @@ import Home from "./pages/Home";
 import Books from "./pages/Books";
 import BookInfo from "./pages/BookInfo";
 import { books } from "./data";
-import Nav from "./Components/Nav";
+import Nav from "./Components/Nav"
+import Footer from "./Components/Footer"
 import Cart from "./pages/Cart";
-import Featured from "./Components/Featured";
 
 function App() {
   const [cart, setCart] = useState([]);
 
-  function addToCart(book) {
+  function addItemToCart(book) {
     const dupeItem = cart.find((item) => item.id === book.id);
     setCart((oldCart) =>
       dupeItem
@@ -85,12 +85,13 @@ function App() {
           <Route path="/books" element={<Books books={books} />} />
           <Route
             path="/books/:id"
-            element={<BookInfo books={books} addToCart={addToCart} />}
+            element={<BookInfo books={books} addItemToCart={addItemToCart} />}
           />
           <Route
             path="/cart"
             element={
-              <Cart cart={cart}
+              <Cart
+                cart={cart}
                 updateCart={updateCart}
                 removeItem={removeItem}
                 totals={calcPrices()}
@@ -98,6 +99,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

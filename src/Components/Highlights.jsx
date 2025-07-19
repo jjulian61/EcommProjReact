@@ -12,19 +12,19 @@ const Highlights = () => {
           </h2>
           <div className="highlight__wrapper">
             <Highlight
-              Icon={<FontAwesomeIcon Icon="bolt" />}
+              icon={<FontAwesomeIcon icon="bolt" />}
               title="Easy and Quick"
-              para="Get access to the book you purchased online instantly"
+              para="Get access to the book you purchased online instantly."
             />
             <Highlight
-              Icon={<FontAwesomeIcon Icon="tags" />}
-              title="Affordable"
-              para="Get your hands on popular books for as little as $10"
-            />
-            <Highlight
-              Icon={<FontAwesomeIcon Icon="book-open" />}
+              icon={<FontAwesomeIcon icon="book-open" />}
               title="10,000+ Books"
-              para="Library has books in all your favorite categories"
+              para="Library has books in all your favourite categories."
+            />
+            <Highlight
+              icon={<FontAwesomeIcon icon="tags" />}
+              title="Affordable"
+              para="Get your hands on popular books for as little as $10."
             />
           </div>
         </div>
