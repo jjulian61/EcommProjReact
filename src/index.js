@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import {library} from '@fortawesome/fontawesome-svg-core'
-//import {faBars, faShoppingCart, faTimes } from '@fortawesome/fontawesome-svg-Icons'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faBars, faShoppingCart, faTimes } from '@fortawesome/fontawesome-svg-Icons'
 
-//library.add(faBars, faShoppingCart, faTimes)
+library.add(faBars, faShoppingCart, faTimes)
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App />);
