@@ -1,95 +1,108 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Price from "../Components/ui/Price"
-import Rating from "../Components/ui/Rating"
-import Book from "../Components/Book"
-import BestBooks from '../Components/ui/BestBooks';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Books from "./pages/Books";
+import BookInfo from "./pages/BookInfo";
+import { books } from "./data";
+import Nav from "./Components/Nav"
+import Footer from "./Components/Footer"
+import Cart from "./pages/Cart";
 
+function App() {
+  const [cart, setCart] = useState([]);
 
-
-const BookInfo = ({ books, addItemToCart }) => {
-  const { id } = useParams();
-  const book = books.find((book) => +book.id === +id);
-  const [added, setAdded] = useState(false);
-  const {cart} = cart
-
-  function addBookToCart(book) {
-    addBookToCart(book);
+  function addItemToCart(book) {
+    const dupeItem = cart.find((item) => item.id === book.id);
+    setCart((oldCart) =>
+      dupeItem
+        ? [
+            ...oldCart.map((item) => {
+              return item.id === dupeItem.id
+                ? {
+                    ...item,
+                    quantity: item.quantity + 1,
+                  }
+                : item;
+            }),
+          ]
+        : [...oldCart, { ...book, quantity: 1 }]
+    );
   }
-  function bookExistsOnCart() {
-    return Cart.find(book => book.id === +id);
+
+  function updateCart(item, newQuantity) {
+    setCart((oldCart) =>
+      oldCart.map((oldItem) => {
+        if (oldItem.id === item.id) {
+          return {
+            ...oldItem,
+            quantity: newQuantity,
+          };
+        } else {
+          return oldItem;
+        }
+      })
+    );
+  }
+
+  function removeItem(item) {
+    setCart((oldCart) => oldCart.filter((cartItem) => cartItem.id !== item.id));
+  }
+
+  function numberOfItems() {
+    let counter = 0;
+    cart.forEach((item) => {
+      counter += +item.quantity;
+    });
+    return counter;
+  }
+
+  function numberOfItems() {
+    let counter = 0;
+    cart.forEach((item) => {
+      counter += +item.quantity;
+    });
+    return counter;
+  }
+
+  function calcPrices() {
+    let total = 0;
+    cart.forEach((item) => {
+      total += (item.salePrice || item.originalPrice) * item.quantity;
+    });
+    return {
+      subtotal: total * 0.9,
+      tax: total * 0.1,
+      total,
+    };
   }
 
   return (
-    <div id="books__body">
-      <main id="books__main">
-        <div className="books__container">
-          <div className="row">
-            <div className="book__selected--top">
-              <Link to="/books" className="book__link">
-                <FontAwesomeIcon icon="arrow-left" />
-              </Link>
-              <Link to="/books" className="book__link">
-                <h2 className="book__selected--title--top">Books</h2>
-              </Link>
-            </div>
-            <div className="book__selected">
-              <figure className="book__selected--figure">
-                <img className="book__selected--img" src={book.url} alt="" />
-              </figure>
-              <div className="book__selected--description">
-                <h2 className="book__selected--title">{book.title}</h2>
-                <Rating rating={book.rating} />
-                <div className="book__selected--price">
-                  <Price
-                    originalPrice={book.originalPrice}
-                    salePrice={book.salePrice}
-                  />
-                </div>
-                <div className="book__summary">
-                  <h3 className="book__summary--title">Summary</h3>
-                  <p className="book__summary--para">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Veniam, repellendus modi odio porro, consequuntur,
-                    asperiores minima sint voluptatem at reiciendis ducimus
-                    neque provident alias iure nihil explicabo nobis id
-                    voluptas.
-                  </p>
-                  <p className="book__summary--para">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Veniam, repellendus modi odio porro, consequuntur,
-                    asperiores minima sint voluptatem at reiciendis ducimus
-                    neque provident alias iure nihil explicabo nobis id
-                    voluptas.
-                  </p>
-                </div>
-                {bookExistsOnCart() ? (
-                <Link to= {`/cart`} className='book__link'>
-                     <button className="btn">Checkout</button>
-                </Link>
-                   
-                ) : (
-                    <button className="btn" onClick={() => addBookToCart(book)}>
-                  Add to Cart
-                </button>
-                )}
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="books__container">
-          <div className="row">
-            <div className="book__selected--top">
-              <h2 className="book__selected--title--top">Recommended Books</h2>
-            </div>
-            <BestBooks id={id} />
-          </div>
-        </div>
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav numberOfItems={numberOfItems()} />
+        <Routes>
+          <Route path="/" element={<Home books={books} />} />
+          <Route path="/books" element={<Books books={books} />} />
+          <Route
+            path="/books/:id"
+            element={<BookInfo books={books} addItemToCart={addItemToCart} cart={cart} />}
+          />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cart={cart}
+                updateCart={updateCart}
+                removeItem={removeItem}
+                totals={calcPrices()}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-};
+}
 
-export default BookInfo;
+export default App;
